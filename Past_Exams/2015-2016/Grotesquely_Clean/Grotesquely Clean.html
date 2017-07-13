@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://uchicago.kattis.com/problems/uchicagoplacement.grotesque -->
+<html lang="en" class=" js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grotesquely Clean – Kattis, University of Chicago</title>
+
+    <link href="./Grotesquely Clean_files/jquery-ui.min.css" rel="stylesheet">
+
+    <script async="" src="./Grotesquely Clean_files/analytics.js.download"></script><script src="./Grotesquely Clean_files/jquery.min.js.download"></script>
+    <script src="./Grotesquely Clean_files/jquery-ui.min.js.download"></script>
+
+    <!-- Fonts/Icons -->
+    <link href="./Grotesquely Clean_files/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./Grotesquely Clean_files/css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link href="./Grotesquely Clean_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Editable and Select2 -->
+    <link href="./Grotesquely Clean_files/select2.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="https://uchicago.kattis.com/favicon">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="./Grotesquely Clean_files/system.css">
+    <style type="text/css">
+          .header {
+         background-color: rgb(136,10,34);
+     }
+     .header .main-nav > ul > li.current:before {
+         border-bottom-color: rgb(136,10,34);
+     }
+
+         </style>
+
+    <script type="text/javascript">
+        window.page_loaded_at = new Date();
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+
+    <script type="text/javascript">
+    jQuery.ns = function (namespace) {
+        var parts = namespace.split('.');
+        var last = window;
+        for (var i = 0; i < parts.length; i++) {
+            last = last[parts[i]] || (last[parts[i]] = {});
+        }
+        return last;
+    };
+</script>
+
+    <script>
+jQuery.extend(jQuery.ns('Kattis.error'), (function () {
+    var messages = {"INTERNAL_SERVER_ERROR":"Internal server error.","ACCESS_DENIED":"Access denied.","NOT_AUTHENTICATED":"Not authenticated.","METHOD_NOT_ALLOWED":"Method not allowed.","INVALID_JSON":"JSON cannot be decoded or encoded data is deeper than the recursion limit.","BAD_CSRF_TOKEN":"Token matches session's csrf_token","SESSION_NAME_EMPTY":"Session's name must be non empty.","SESSION_START_TIME_EMPTY":"Session's start time must be non empty.","SESSION_START_TIME_PASSED":"Session's start time has already passed.","SESSION_DURATION_EMPTY":"Session's duration must be non empty.","SESSION_DURATION_NEGATIVE":"Session's duration must be a positive number.","SESSION_DURATION_EXCEEDED":"Maximum duration for the session was exceeded.","USER_CREATED_SESSION_DURATION_EXCEEDED":"Contest cannot be longer than 168 hours.","INVALID_SESSION_SHORTNAME":"Invalid shortname for the session.","INVALID_SESSION_CUTOFF":"Invalid cutoff for the session.","INVALID_USER_NAME":"Invalid username or email.","SESSION_NOT_FOUND":"No such session.","COURSE_NOT_FOUND":"No such course.","OFFERING_NOT_FOUND":"No such offering.","TEACHER_NOT_FOUND":"No such teacher.","AUTHOR_NOT_FOUND":"No such author.","JUDGE_NOT_FOUND":"No such judge.","JUDGE_ALREADY_EXIST":"The user is already a judge.","TEACHER_ALREADY_EXIST":"The user is already a teacher.","PROBLEM_NOT_FOUND":"No such problem.","TEAM_NOT_FOUND":"No such team.","SESSION_PROBLEM_ALREADY_EXIST":"The problem has been already added to the session.","SESSION_PROBLEM_DOES_NOT_EXIST":"The problem does not relate to the session.","PROBLEM_INDEX_NEGATIVE":"Problem index must be non negative.","AUTHOR_IS_CURRENT_TEAM_MEMBER":"The user you tried to add is already a member of the current team.","AUTHOR_IS_ANOTHER_TEAM_MEMBER":"The user you tried to add is already a member of another team in the current session.","AUTHOR_IS_JUDGE":"The user you tried to add is a judge.","AUTHOR_IS_NOT_TEAM_MEMBER":"The user you tried to remove is not a team member.","JUDGE_IS_TEAM_MEMBER":"The user you tried to add is a session team member or invitee.","SESSION_PUBLISHING_DENIED":"You do not have permission to publish this session.","CANNOT_PUBLISH_HISTORICAL_SESSION":"You cannot publish a session with a historical start time."};
+
+    return {
+        get_msg: function (error_code) {
+            return messages[error_code];
+        },
+
+        show_msg: function (base_message, error_code) {
+            alert(base_message + this.get_msg(error_code));
+        }
+    }
+})());
+</script>
+
+
+    
+    <meta name="robots" content="noindex">
+    
+<script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+        tex2jax: {
+            ignoreClass: ".*",
+            inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+        MMLorHTML: {
+            prefer: { Firefox: "HTML" }
+        }
+    });
+</script>
+
+<script type="text/javascript" src="./Grotesquely Clean_files/MathJax.js.download"></script>
+
+
+
+        <script>
+  (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-26661929-8', 'auto');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+
+</script>
+
+    
+
+    
+    <style type="text/css">
+        .header { margin-bottom: 0; }
+        .page-content.single { padding: 0; }
+        .problem-headline h1 { margin-top: 0; }
+    </style>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">@font-face {font-family: MathJax_AMS; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf?V=2.7.1') format('opentype')}
+</style></head>
+
+<body class="page-master-layout page-problem page-problem-layout"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+
+<div id="wrapper">
+    <header class="header">
+    <div class="background">
+                    <a href="https://open.kattis.com/" class="logo-kattis">
+                <div class="img"></div>
+                <div class="bg"></div>
+                <div class="txt">OpenKattis</div>
+            </a>
+        
+        <div class="wrap">
+            <div class="fl">
+                                    <a href="https://uchicago.kattis.com/"><img class="logo" src="./Grotesquely Clean_files/site-logo" alt=""></a>
+                                <div class="title-wrapper">
+                    <div class="header-title">University of Chicago</div>
+                    <nav class="main-nav">
+                        <ul>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/courses">Courses</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/problems">Problems</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/submissions">Queue</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/help">Help</a></li>
+                            
+                                                    </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="user-side fr">
+
+                <nav class="user-nav">
+                    <ul class="user-nav-ul">
+                                                    <li>
+                                <form action="https://uchicago.kattis.com/search" class="site-search" method="GET">
+                                    <input type="text" name="q" placeholder="Search Kattis">
+                                    <a href="https://uchicago.kattis.com/problems/uchicagoplacement.grotesque#">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </form>
+                            </li>
+                        
+                                                     
+                                <li><a class="btn dark-bg" href="https://uchicago.kattis.com/login">Log in</a></li>
+                                                                        </ul>
+
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!--[if IE]>
+    <div class="alert alert-warning" role="alert">
+        <strong>You are using an outdated browser!</strong> Some features might not look or work like expected. Kattis supports the last two versions of major browsers. Please consider upgrading to a recent version!    </div>
+    <![endif]-->
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+    
+
+    <div class="container" style="width: 1170px!important">
+        
+
+        
+                    
+
+        
+        <div class="col-xs-9" style="padding: 0">
+            <div class="page-content single clearfix">
+                <section class="box clearfix main-content">
+                    
+                    
+
+
+
+
+
+
+
+
+<div class="problem-wrapper">
+
+    <div class="problem-headline clearfix">
+        <div class="headline-wrapper"><h1>Grotesquely Clean</h1></div>
+    </div>
+
+            
+  <div class="problembody">
+    <p>If you look around the buildings of the University of
+    Chicago, you will find many carved stone figures called
+    <em>grotesques</em> (fun fact: these are commonly known as
+    “gargoyles”, but a gargoyle is actually a type of grotesque
+    and, specifically, one that spouts water). The grotesques have
+    to be cleaned periodically, for which the university employs a
+    Grotesque Cleaner called Hans Wasserspeier. Hans has recently
+    taken on a young and enterprising apprentice, Graham R. Goyle,
+    who suggested the Department of Computer Science could write a
+    program that can help Hans and Graham determine whether a
+    grotesque has to be cleaned or not.</p>
+
+    <p>The process to determine whether a grotesque has to be
+    cleaned is very simple. First, Hans and Graham measure how
+    dirty the grotesque is on ten different spots (each of these
+    ten measurements will, ordinarily, have a value between 1 and
+    5). Then, if these ten measurements add up to a total of 30 or
+    more, then the grotesque needs to be cleaned. Otherwise, it
+    does not have to be cleaned.</p>
+
+    <p>However, sometimes, an specially dirty spot will result in a
+    measurement having a value of 6. When this happens, the
+    grotesque has to be cleaned, even if the measurements don’t add
+    up to 30.</p>
+
+    <h2>Input</h2>
+
+    <p>The input is composed of a single line, with ten integers,
+    each separated by a single space. Each integer represents a
+    measurement <span class="tex2jax_process"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 1.175em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.896em; height: 0px; font-size: 128%;"><span style="position: absolute; clip: rect(1.677em 1000.9em 2.458em -999.997em); top: -2.285em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">m</span></span><span style="display: inline-block; width: 0px; height: 2.291em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.718em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">m</script></span>
+    (<span class="tex2jax_process"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2A7D;&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;&amp;#x2A7D;&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4" style="width: 5.862em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.579em; height: 0px; font-size: 128%;"><span style="position: absolute; clip: rect(1.621em 1004.52em 2.737em -999.997em); top: -2.453em; left: 0em;"><span class="mrow" id="MathJax-Span-5"><span class="mn" id="MathJax-Span-6" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-7" style="font-family: MathJax_AMS; padding-left: 0.282em;">⩽</span><span class="mi" id="MathJax-Span-8" style="font-family: MathJax_Math-italic; padding-left: 0.282em;">m</span><span class="mo" id="MathJax-Span-9" style="font-family: MathJax_AMS; padding-left: 0.282em;">⩽</span><span class="mn" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.282em;">6</span></span><span style="display: inline-block; width: 0px; height: 2.458em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left: 0px solid; width: 0px; height: 1.146em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>⩽</mo><mi>m</mi><mo>⩽</mo><mn>6</mn></math></span></span><script type="math/tex" id="MathJax-Element-2">1 \leqslant m \leqslant
+    6</script></span>).</p>
+
+    <h2>Output</h2>
+
+    <p>If the grotesque has to be cleaned, print <tt class="ttfamily">CLEAN</tt>. If the grotesque does not have to be
+    cleaned, print <tt class="ttfamily">DO NOT CLEAN</tt>.</p>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>1 1 1 1 2 1 3 1 1 2
+</pre>
+        </td>
+
+        <td>
+          <pre>DO NOT CLEAN
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 2</th>
+
+        <th>Sample Output 2</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>1 1 1 1 2 6 3 1 1 2
+</pre>
+        </td>
+
+        <td>
+          <pre>CLEAN
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 3</th>
+
+        <th>Sample Output 3</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>5 5 4 5 3 5 2 5 4 3
+</pre>
+        </td>
+
+        <td>
+          <pre>CLEAN
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+    
+</div>
+
+
+                </section>
+            </div>
+        </div>
+        <div class="col-xs-3" style="padding-right: 0; width: 285px!important">
+            
+<div class="page-content single clearfix">
+    <section class="box clearfix main-content" style="padding: 15px">
+        <div class="problem-sidebar sidebar-info"> <div class="alt-buttons"><a style="width: 117px" href="https://uchicago.kattis.com/problems/uchicagoplacement.grotesque/submit" class="kat-button kat-primary small" data-toggle="tooltip" data-placement="top" title="" data-original-title="Submit"><i class="fa fa-upload"></i>Submit</a><a style="width: 117px; margin-left: 5px" href="https://uchicago.kattis.com/problems/uchicagoplacement.grotesque/statistics" class="kat-button kat-info small" data-toggle="tooltip" data-placement="top" title="" data-original-title="Problem statistics"><i class="fa fa-bar-chart-o"></i>Stats</a></div> <div class="sidebar-info"> <div class="problem-button-wrap"><div class="btn-group btn-group-sm btn-group-justified"></div> </div> </div> <div class="sidebar-info"> <p><strong>Problem ID: </strong>uchicagoplacement.grotesque</p><p><strong>CPU Time limit: </strong>1 second</p> <p><strong>Memory limit: </strong>1024 MB</p><div class="problem-download"> <p><strong>Download: </strong><br><a href="https://uchicago.kattis.com/problems/uchicagoplacement.grotesque/file/statement/samples.zip">Sample data files</a><br></p> </div></div> </div>
+    </section>
+</div>
+
+<div class="page-content single clearfix" style="margin-top: -15px">
+    <section class="box clearfix main-content problem-sidebar" style="padding: 5px 15px">
+        <div class="sidebar-info">
+            
+                            <p>
+                    <strong>Source:</strong>
+                                            University of Chicago - Department of Computer Science
+                                    </p>
+            
+                            <p>
+                    <strong>License:</strong>
+                                            <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/" style="vertical-align: middle;">
+                                                                <img class="problem-license" alt="Creative Commons License (cc by-sa)" src="./Grotesquely Clean_files/80x15.png">
+                                                                </a>
+                                    </p>
+            
+            
+            
+                    </div>
+    </section>
+</div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-info col-md-3 ">
+                
+                            </div>
+            <div class="footer-powered col-md-6">
+                <h4>
+                                    Powered by&nbsp;Kattis                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="./Grotesquely Clean_files/bootstrap.min.js.download"></script>
+<script src="./Grotesquely Clean_files/modernizr.min.js.download"></script>
+<script src="./Grotesquely Clean_files/select2.min.js.download"></script>
+<script src="./Grotesquely Clean_files/raphael-min.js.download"></script>
+<script src="./Grotesquely Clean_files/system.js.download" type="text/javascript"></script>
+
+
+
+    <script>peekin = {api_key: "f894d40e034f5ceff742"};</script><script src="./Grotesquely Clean_files/peekin.js.download" async=""></script>
+
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_AMS, sans-serif;"></div></div></body></html>
