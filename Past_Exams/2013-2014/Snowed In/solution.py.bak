@@ -1,0 +1,14 @@
+import sys
+
+fhand = sys.stdin
+lines = fhand.readlines()
+
+num_measurements = int(lines[0].strip())
+
+measurements = lines[1].strip().split()
+for i in xrange(num_measurements):
+    measurements[i] = int(measurements[i])
+
+measurement_max = measurements[0]
+measurement_min = measurements[0]
+

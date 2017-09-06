@@ -1,0 +1,18 @@
+import sys
+
+fhand = sys.stdin
+lines = fhand.readlines()
+
+name = lines[0].strip()
+length = len(name)
+
+name_flipped = ''
+
+for i in xrange(0, length-1, 2):
+    name_flipped += (name[i+1] + name[i])
+
+# Judge if a number is odd
+if str(length)[-1] in ['1', '3', '5', '7', '9']:
+    name_flipped += name[-1]
+
+print(name_flipped)

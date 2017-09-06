@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://uchicago.kattis.com/problems/uchicago.noble -->
+<html lang="en" class=" js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Noble Houses of Apaxia – Kattis, University of Chicago</title>
+
+    <link href="./The Noble Houses of Apaxia_files/jquery-ui.min.css" rel="stylesheet">
+
+    <script async="" src="./The Noble Houses of Apaxia_files/analytics.js.download"></script><script src="./The Noble Houses of Apaxia_files/jquery.min.js.download"></script>
+    <script src="./The Noble Houses of Apaxia_files/jquery-ui.min.js.download"></script>
+
+    <!-- Fonts/Icons -->
+    <link href="./The Noble Houses of Apaxia_files/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./The Noble Houses of Apaxia_files/css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link href="./The Noble Houses of Apaxia_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Editable and Select2 -->
+    <link href="./The Noble Houses of Apaxia_files/select2.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="https://uchicago.kattis.com/favicon">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="./The Noble Houses of Apaxia_files/system.css">
+    <style type="text/css">
+          .header {
+         background-color: rgb(136,10,34);
+     }
+     .header .main-nav > ul > li.current:before {
+         border-bottom-color: rgb(136,10,34);
+     }
+
+         </style>
+
+    <script type="text/javascript">
+        window.page_loaded_at = new Date();
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+
+    <script type="text/javascript">
+    jQuery.ns = function (namespace) {
+        var parts = namespace.split('.');
+        var last = window;
+        for (var i = 0; i < parts.length; i++) {
+            last = last[parts[i]] || (last[parts[i]] = {});
+        }
+        return last;
+    };
+</script>
+
+    <script>
+jQuery.extend(jQuery.ns('Kattis.error'), (function () {
+    var messages = {"INTERNAL_SERVER_ERROR":"Internal server error.","ACCESS_DENIED":"Access denied.","NOT_AUTHENTICATED":"Not authenticated.","METHOD_NOT_ALLOWED":"Method not allowed.","INVALID_JSON":"JSON cannot be decoded or encoded data is deeper than the recursion limit.","BAD_CSRF_TOKEN":"Token matches session's csrf_token","SESSION_NAME_EMPTY":"Session's name must be non empty.","SESSION_START_TIME_EMPTY":"Session's start time must be non empty.","SESSION_START_TIME_PASSED":"Session's start time has already passed.","SESSION_DURATION_EMPTY":"Session's duration must be non empty.","SESSION_DURATION_NEGATIVE":"Session's duration must be a positive number.","SESSION_DURATION_EXCEEDED":"Maximum duration for the session was exceeded.","USER_CREATED_SESSION_DURATION_EXCEEDED":"Contest cannot be longer than 168 hours.","INVALID_SESSION_SHORTNAME":"Invalid shortname for the session.","INVALID_SESSION_CUTOFF":"Invalid cutoff for the session.","INVALID_USER_NAME":"Invalid username or email.","SESSION_NOT_FOUND":"No such session.","COURSE_NOT_FOUND":"No such course.","OFFERING_NOT_FOUND":"No such offering.","TEACHER_NOT_FOUND":"No such teacher.","AUTHOR_NOT_FOUND":"No such author.","JUDGE_NOT_FOUND":"No such judge.","JUDGE_ALREADY_EXIST":"The user is already a judge.","TEACHER_ALREADY_EXIST":"The user is already a teacher.","PROBLEM_NOT_FOUND":"No such problem.","TEAM_NOT_FOUND":"No such team.","SESSION_PROBLEM_ALREADY_EXIST":"The problem has been already added to the session.","SESSION_PROBLEM_DOES_NOT_EXIST":"The problem does not relate to the session.","PROBLEM_INDEX_NEGATIVE":"Problem index must be non negative.","AUTHOR_IS_CURRENT_TEAM_MEMBER":"The user you tried to add is already a member of the current team.","AUTHOR_IS_ANOTHER_TEAM_MEMBER":"The user you tried to add is already a member of another team in the current session.","AUTHOR_IS_JUDGE":"The user you tried to add is a judge.","AUTHOR_IS_NOT_TEAM_MEMBER":"The user you tried to remove is not a team member.","JUDGE_IS_TEAM_MEMBER":"The user you tried to add is a session team member or invitee.","SESSION_PUBLISHING_DENIED":"You do not have permission to publish this session.","CANNOT_PUBLISH_HISTORICAL_SESSION":"You cannot publish a session with a historical start time."};
+
+    return {
+        get_msg: function (error_code) {
+            return messages[error_code];
+        },
+
+        show_msg: function (base_message, error_code) {
+            alert(base_message + this.get_msg(error_code));
+        }
+    }
+})());
+</script>
+
+
+    
+    <meta name="robots" content="noindex">
+    
+<script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+        tex2jax: {
+            ignoreClass: ".*",
+            inlineMath: [['$','$'], ['\\(','\\)']]
+        },
+        MMLorHTML: {
+            prefer: { Firefox: "HTML" }
+        }
+    });
+</script>
+
+<script type="text/javascript" src="./The Noble Houses of Apaxia_files/MathJax.js.download"></script>
+
+
+
+        <script>
+  (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-26661929-8', 'auto');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+
+</script>
+
+    
+
+    
+    <style type="text/css">
+        .header { margin-bottom: 0; }
+        .page-content.single { padding: 0; }
+        .problem-headline h1 { margin-top: 0; }
+    </style>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="page-master-layout page-problem page-problem-layout" style=""><div id="MathJax_Message" style="display: none;"></div>
+
+
+<div id="wrapper">
+    <header class="header">
+    <div class="background">
+                    <a href="https://open.kattis.com/" class="logo-kattis">
+                <div class="img"></div>
+                <div class="bg"></div>
+                <div class="txt">OpenKattis</div>
+            </a>
+        
+        <div class="wrap">
+            <div class="fl">
+                                    <a href="https://uchicago.kattis.com/"><img class="logo" src="./The Noble Houses of Apaxia_files/site-logo" alt=""></a>
+                                <div class="title-wrapper">
+                    <div class="header-title">University of Chicago</div>
+                    <nav class="main-nav">
+                        <ul>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/courses">Courses</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/problems">Problems</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/submissions">Queue</a></li>
+                                                                                            
+                                <li class=""><a href="https://uchicago.kattis.com/help">Help</a></li>
+                            
+                                                    </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="user-side fr">
+
+                <nav class="user-nav">
+                    <ul class="user-nav-ul">
+                                                    <li>
+                                <form action="https://uchicago.kattis.com/search" class="site-search" method="GET">
+                                    <input type="text" name="q" placeholder="Search Kattis">
+                                    <a href="https://uchicago.kattis.com/problems/uchicago.noble#">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </form>
+                            </li>
+                        
+                                                     
+                                <li><a class="btn dark-bg" href="https://uchicago.kattis.com/login">Log in</a></li>
+                                                                        </ul>
+
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!--[if IE]>
+    <div class="alert alert-warning" role="alert">
+        <strong>You are using an outdated browser!</strong> Some features might not look or work like expected. Kattis supports the last two versions of major browsers. Please consider upgrading to a recent version!    </div>
+    <![endif]-->
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+    
+
+    <div class="container" style="width: 1170px!important">
+        
+
+        
+                    
+
+        
+        <div class="col-xs-9" style="padding: 0">
+            <div class="page-content single clearfix">
+                <section class="box clearfix main-content">
+                    
+                    
+
+
+
+
+
+
+
+
+<div class="problem-wrapper">
+
+    <div class="problem-headline clearfix">
+        <div class="headline-wrapper"><h1>The Noble Houses of Apaxia</h1></div>
+    </div>
+
+            
+  <div class="problembody">
+    <p>The Oriental Institute has made yet another exciting
+    discovery about the ancient (and certainly not fictitious)
+    Apaxian civilization: when an Apaxian performed a noble deed,
+    they were granted a <em>noble</em> name. Their noble name was
+    obtained via a simple transformation of their regular name. For
+    example, suppose there was an Apaxian with the following
+    name:</p>
+    <pre>menolaxios mox
+</pre>
+
+    <p>Their noble name is obtained simply by changing their last
+    name: it will now be repeated as many times as the length (in
+    characters) of the last name. So, the noble name of the above
+    Apaxian becomes:</p>
+    <pre>menolaxios moxmoxmox
+</pre>
+
+    <p>There was, however, an exception: Apaxians considered the
+    number five to be very unlucky, so last names with five
+    characters were repeated <em>four</em> times instead. So, the
+    last name <tt class="ttfamily">maxos</tt> would become
+    <tt class="ttfamily">maxosmaxosmaxosmaxos</tt> instead of
+    <tt class="ttfamily">maxosmaxosmaxosmaxosmaxos</tt>.</p>
+
+    <p>The Oriental Institute has, once again, asked us to apply
+    our prodigious string processing skills to help them compute
+    the noble names of several Apaxians.</p>
+
+    <h2>Input</h2>
+
+    <p>The input contains two strings separated by a single space:
+    a first name and a last name. Each string contains only
+    lowercase letters, and is at least 2 characters long and at
+    most 10 characters long.</p>
+
+    <h2>Output</h2>
+
+    <p>Given the full name in the input, you must produce the noble
+    name according to the rules described above. You must include
+    both the first name (which is not changed) and the last name
+    (which does change), separated by a single space.</p>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>menolaxios mox
+</pre>
+        </td>
+
+        <td>
+          <pre>menolaxios moxmoxmox
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 2</th>
+
+        <th>Sample Output 2</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>alemax maxos
+</pre>
+        </td>
+
+        <td>
+          <pre>alemax maxosmaxosmaxosmaxos
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+    
+</div>
+
+
+                </section>
+            </div>
+        </div>
+        <div class="col-xs-3" style="padding-right: 0; width: 285px!important">
+            
+<div class="page-content single clearfix">
+    <section class="box clearfix main-content" style="padding: 15px">
+        <div class="problem-sidebar sidebar-info"> <div class="alt-buttons"><a style="width: 117px" href="https://uchicago.kattis.com/problems/uchicago.noble/submit" class="kat-button kat-primary small" data-toggle="tooltip" data-placement="top" title="" data-original-title="Submit"><i class="fa fa-upload"></i>Submit</a><a style="width: 117px; margin-left: 5px" href="https://uchicago.kattis.com/problems/uchicago.noble/statistics" class="kat-button kat-info small" data-toggle="tooltip" data-placement="top" title="" data-original-title="Problem statistics"><i class="fa fa-bar-chart-o"></i>Stats</a></div> <div class="sidebar-info"> <div class="problem-button-wrap"><div class="btn-group btn-group-sm btn-group-justified"></div> </div> </div> <div class="sidebar-info"> <p><strong>Problem ID: </strong>uchicago.noble</p><p><strong>CPU Time limit: </strong>1 second</p> <p><strong>Memory limit: </strong>1024 MB</p><div class="problem-download"> <p><strong>Download: </strong><br><a href="https://uchicago.kattis.com/problems/uchicago.noble/file/statement/samples.zip">Sample data files</a><br></p> </div></div> </div>
+    </section>
+</div>
+
+<div class="page-content single clearfix" style="margin-top: -15px">
+    <section class="box clearfix main-content problem-sidebar" style="padding: 5px 15px">
+        <div class="sidebar-info">
+            
+                            <p>
+                    <strong>Source:</strong>
+                                            University of Chicago - Department of Computer Science
+                                    </p>
+            
+                            <p>
+                    <strong>License:</strong>
+                                            <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/" style="vertical-align: middle;">
+                                                                <img class="problem-license" alt="Creative Commons License (cc by-sa)" src="./The Noble Houses of Apaxia_files/80x15.png">
+                                                                </a>
+                                    </p>
+            
+            
+            
+                    </div>
+    </section>
+</div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-info col-md-3 ">
+                
+                            </div>
+            <div class="footer-powered col-md-6">
+                <h4>
+                                    Powered by&nbsp;Kattis                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="./The Noble Houses of Apaxia_files/bootstrap.min.js.download"></script>
+<script src="./The Noble Houses of Apaxia_files/modernizr.min.js.download"></script>
+<script src="./The Noble Houses of Apaxia_files/select2.min.js.download"></script>
+<script src="./The Noble Houses of Apaxia_files/raphael-min.js.download"></script>
+<script src="./The Noble Houses of Apaxia_files/system.js.download" type="text/javascript"></script>
+
+
+
+    <script>peekin = {api_key: "f894d40e034f5ceff742"};</script><script src="./The Noble Houses of Apaxia_files/peekin.js.download" async=""></script>
+
+
+
+</body></html>
