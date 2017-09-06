@@ -3,7 +3,6 @@ import sys
 fhand = sys.stdin
 lines = fhand.readlines()
 
-print lines[0]
 num_measurements = int(lines[0].strip())
 measurements = lines[1].strip().split(' ')
 

@@ -12,7 +12,7 @@ for i in xrange(num_measurements):
 sum_valid_measurements = 0
 num_valid_measurements = 0
 for measurement in measurements:
-    if measurement > 0:
+    if measurement >= 0:
         sum_valid_measurements += measurement
         num_valid_measurements += 1
 
