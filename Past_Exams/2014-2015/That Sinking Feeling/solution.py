@@ -1,0 +1,57 @@
+import sys
+
+fhand = sys.stdin
+lines = fhand.readlines()
+
+parameters = lines[0].strip().split(' ')
+N = int(parameters[0])
+M = int(parameters[1])
+# Number of ships
+S = int(parameters[2])
+# Number of shots
+R = int(parameters[3])
+
+# Initialize the board
+board = list()
+for i in xrange(N):
+    board.append([0]*M)
+
+# Assign ships on the board
+coordinates_ship = []
+for i in xrange(S):
+    [x, y] = lines[1+i].split(' ')
+    x = int(x)
+    y = int(y)
+    coordinates_ship.append((x,y))
+    board[x][y] = 1
+
+# Calculate points
+points = 0
+num_ships_sunk = 0
+for j in xrange(R):
+    [x, y] = lines[1+S+j].split(' ')
+    x = int(x)
+    y = int(y)
+    # If hit the ship
+    if board[x][y] == 1:
+        points += 1000
+        board[x][y] = 0
+        coordinates_ship.remove((x,y))
+        num_ships_sunk += 1
+    else:
+        distances = []
+        for coordinates in coordinates_ship:
+            distances.append(abs(coordinates[0]-x)+abs(coordinates[1]-y))
+        distance_min = distances[0]
+        distance_min_index = 0
+        for i in xrange(len(distances)):
+            if distances[i] < distance_min:
+                distance_min = distances[i]
+                distance_min_index = i
+        points += max(0, 1000-distance_min*100)
+
+print("%d/%d ships sunk. Score: %d points" %(num_ships_sunk, S, points))
+
+        
+
+
